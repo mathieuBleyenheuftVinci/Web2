@@ -20,4 +20,49 @@ Content-Type: application/json
     "budget": 100000
 }
 
+### Create a film without title
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title":,
+    "director":"Inoxtag",
+    "duration": 167,
+    "budget": 100000
+}
+
+### Create a film with an invalid duration
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title":"Kaizen",
+    "director":"Inoxtag",
+    "duration": -167,
+    "budget": 100000
+}
+
+### Create a film with an string duration
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title":"Kaizen",
+    "director":"Inoxtag",
+    "duration": "167",
+    "budget": 100000
+}
+
+### Create a film without a mandatory params
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    
+    "director":"Inoxtag",
+    "duration": 167,
+    "budget": 100000
+}
+
+### Create a film with all params True
 
