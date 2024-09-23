@@ -1,2 +1,23 @@
+@baseUrl = http://localhost:3000
+
 ### Read all films
-GET http://localhost:3000/films
+GET {{baseUrl}}/films
+
+### Read film by id 
+GET {{baseUrl}}/films/1
+
+### Read film by minimal duration = 140
+GET {{baseUrl}}/films/?minimum-duration=140
+
+### Create a film
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title":"Kaizen",
+    "director":"Inoxtag",
+    "duration": 167,
+    "budget": 100000
+}
+
+
