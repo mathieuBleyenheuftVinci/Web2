@@ -70,7 +70,7 @@ const defaultFilms: Film[] = [
         ("description" in body && typeof body.description !== "string") ||
         ("imageURL" in body && typeof body.imageURL !== "string")
     ) {
-      return res.sendStatus(400);
+      return res.json("Wrong body format");
     }
 
     const { title, director, duration, budget, description, imageURL } = body as NewFilm;
