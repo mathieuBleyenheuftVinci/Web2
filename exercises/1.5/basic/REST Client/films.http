@@ -12,6 +12,10 @@ GET {{baseUrl}}/films/?minimum-duration=0
 ### Read film with ID == 1
 GET {{baseUrl}}/films/1
 
+### Read film with no correct ID==156
+
+GET {{baseUrl}}/films/156
+
 ### Read film which does not exist
 GET {{baseUrl}}/films/500
 
