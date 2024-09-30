@@ -31,3 +31,15 @@ Content-Type: application/json
     "volume" : 0.25,
     "price" : 4.5
 }
+
+### Delete a drink with id = 2
+
+DELETE {{baseUrl}}/drinks/2
+
+### Update the drink identified by 3
+PATCH {{baseUrl}}/drinks/3
+Content-Type: application/json
+
+{
+    "price": 56.0
+}
