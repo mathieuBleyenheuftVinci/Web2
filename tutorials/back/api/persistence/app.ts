@@ -6,6 +6,9 @@ import drinkRouter from "./routes/drinks";
 
 const app = express();
 
+app.use(express.json());
+
+
 app.use((_req, _res, next) => {
   console.log(
     "Time:",
