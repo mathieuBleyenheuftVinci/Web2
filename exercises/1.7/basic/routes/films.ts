@@ -1,10 +1,12 @@
 import { Router } from "express";
-
 import { Film, NewFilm } from "../types";
+import path from "node:path";
+import { parse, serialize } from "../utils/json";
+const jsonDbPath = path.join(__dirname, "/../data/films.json");
 
 const router = Router();
 
-const films: Film[] = [
+const defaultFilms: Film[] = [
   {
     id: 1,
     title: "Shang-Chi and the Legend of the Ten Rings",
@@ -61,8 +63,9 @@ const films: Film[] = [
   },
 ];
 
-// Read all films, filtered by minimum-duration if the query param exists
+// Read all defaultFilms, filtered by minimum-duration if the query param exists
 router.get("/", (req, res) => {
+  const films = parse(jsonDbPath, defaultFilms);
   if (req.query["minimum-duration"] === undefined) {
     return res.send(films);
   }
@@ -73,14 +76,15 @@ router.get("/", (req, res) => {
     return res.sendStatus(400);
   }
 
-  const filteredFilms = films.filter((film) => film.duration >= minDuration);
+  const filtereddefaultFilms = films.filter((film) => film.duration >= minDuration);
 
-  return res.send(filteredFilms);
+  return res.json(filtereddefaultFilms);
 });
 
 // Read a film by id
 router.get("/:id", (req, res) => {
   const id = Number(req.params.id);
+  const films = parse(jsonDbPath, defaultFilms);
 
   if (isNaN(id)) {
     return res.sendStatus(400);
@@ -92,7 +96,7 @@ router.get("/:id", (req, res) => {
     return res.sendStatus(404);
   }
 
-  return res.send(film);
+  return res.json(film);
 });
 
 // Create a new film
@@ -138,6 +142,7 @@ router.post("/", (req, res) => {
   // End of challenge
 
   const newFilm = body as NewFilm;
+  const films = parse(jsonDbPath, defaultFilms);
 
   const existingFilm = films.find(
     (film) =>
@@ -154,23 +159,26 @@ router.post("/", (req, res) => {
 
   const addedFilm: Film = { id: nextId, ...newFilm };
 
-  films.push(addedFilm);
-
+  defaultFilms.push(addedFilm);
+  serialize(jsonDbPath, films);
   return res.json(addedFilm);
 });
 
 router.delete("/:id", (req,res) => {
   const id = Number(req.params.id);
+  const films = parse(jsonDbPath, defaultFilms);
   const index = films.findIndex((film) => film.id === id);
   if (index === -1){
     return res.sendStatus(400);
   }
   const deleteElements = films.splice(index,1);
+  serialize(jsonDbPath, films);
   return res.json(deleteElements[0]);
 });
 
 router.patch("/:id", (req,res) => {
   const id = Number(req.params.id);
+  const films = parse(jsonDbPath, defaultFilms);
 
   if (isNaN(id)) {
     return res.sendStatus(400);
@@ -205,15 +213,15 @@ router.patch("/:id", (req,res) => {
     }
 
     const updatedFilm = {...filmToUpdate, ...body};
-    films[films.indexOf(filmToUpdate)] = updatedFilm;
-
+    defaultFilms[films.indexOf(filmToUpdate)] = updatedFilm;
+    serialize(jsonDbPath, films);
     return res.json(updatedFilm);
 
   });
 
   router.put("/:id" , (req, res) => {
     const body: unknown = req.body;
-    
+    const films = parse(jsonDbPath, defaultFilms);
     if (
       !body ||
       typeof body !== "object" ||
@@ -260,7 +268,8 @@ router.patch("/:id", (req,res) => {
     const nextId = films.reduce((acc, film) => (film.id > acc ? film.id : acc), 0) + 1;
 
     const addedFilm = {id: nextId, ...newFilm};
-    films.push(addedFilm);
+    defaultFilms.push(addedFilm);
+    serialize(jsonDbPath, films);
     return res.json(addedFilm);
   }
 
@@ -269,7 +278,7 @@ router.patch("/:id", (req,res) => {
     const updatedFilm = {...films[indexOfFilmToUpdate], ...body} as Film;
 
     films[indexOfFilmToUpdate] = updatedFilm;
-
+    serialize(jsonDbPath, films);
     return res.send(updatedFilm)
 
   });
