@@ -1,9 +1,9 @@
-import { Movie } from "../types";
+import { Movie } from "../../types";
 import "./App.css";
-import Cinema from "./Cinema";
-import Footer from "./Footer";
-import Header from "./Header";
-import PageTitle from "./PageTitle";
+import Cinema from "../Cinema";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import PageTitle from "../PageTitle";
 
 const App = () => {
   const pageTitle = "Informations sur les films dans les cinémas";
@@ -65,7 +65,7 @@ const App = () => {
       </main>
 
       <Footer urlLogo="https://media.istockphoto.com/id/1202770152/fr/photo/bobine-de-film-disolement-sur-le-fond-jaune-lumineux-dans-les-couleurs-pastel.jpg?s=1024x1024&w=is&k=20&c=2yKBrC8oyimPdW-5IxFWN_zxFPVK3KWYL9OE2gVmVX4=">
-        <p>© 2021 UGC Cinémas</p>
+        <p>© 2024 UGC Cinémas</p>
       </Footer>
     </div>
   );
