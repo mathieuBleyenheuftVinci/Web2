@@ -1,8 +1,9 @@
 import sound from "../../assets/sounds/Infecticide-11-Pizza-Spinoza.mp3";
 import "./Main.css"
 import PizzaMenu from "./PizzaMenu";
-import DrinkMenu from "./DinkMenu";
+import DrinkMenu from "./DrinkMenu";
 import DrinkCard from "./DrinkCard";
+
 
 const Main = () => {
   return (
