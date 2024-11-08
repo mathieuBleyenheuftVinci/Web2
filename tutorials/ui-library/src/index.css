@@ -1,11 +1,4 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+div#root {
+  width: 100%;
+  display: inline-block; /* avoid margins to collapse to avoid vertical scrollbar */
 }
-
-/*html {
-  background-image: url(./assets/images/pizza.jpg);
-  background-size: cover;
-}*/

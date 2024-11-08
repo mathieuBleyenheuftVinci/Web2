@@ -1,6 +1,7 @@
 import { useState } from "react";
 import sound from "../../assets/sounds/Infecticide-11-Pizza-Spinoza.mp3";
 import DrinkMenu from "./DrinkMenu";
+// import "./Main.css";
 import PizzaMenu from "./PizzaMenu";
 import { NewPizza, Pizza, Drink} from "../../types";
 import AddPizza from "./AddPizza";
@@ -89,11 +90,7 @@ const Main = ({ actionToBePerformed, clearActionToBePerformed }: MainProps) => {
 
       <PizzaMenu pizzas={pizzas} />
 
-      <br/>
-
       <AddPizza addPizza={addPizza} />
-
-      <br/>
 
       <DrinkMenu title="Notre Menu de Boissons" drinks={drinks} />
     </Container>

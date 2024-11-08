@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 
 interface HeaderProps {
@@ -8,6 +8,7 @@ interface HeaderProps {
 }
 
 const Header = ({ title, handleHeaderClick }: HeaderProps) => {
+  const theme = useTheme();
   const [menuPrinted, setMenuPrinted] = useState(false);
 
   const handleClick = () => {
@@ -19,6 +20,14 @@ const Header = ({ title, handleHeaderClick }: HeaderProps) => {
   return (
     <Box
       component="header"
+      sx={{
+        px: 2,
+        backgroundColor:
+          theme.palette.mode === "light"
+            ? theme.palette.primary.light
+            : theme.palette.primary.dark,
+        color: (theme) => theme.palette.primary.contrastText,
+      }}
       onClick={handleClick}
     >
       <Container maxWidth="sm">

@@ -6,6 +6,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  useTheme,
 } from "@mui/material";
 
 import { Pizza } from "../../types";
@@ -14,13 +15,30 @@ interface PizzaMenuProps {
   pizzas: Pizza[];
 }
 const PizzaMenu = ({ pizzas }: PizzaMenuProps) => {
+  const theme = useTheme();
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table
+        sx={{
+          minWidth: 500,
+          "& .MuiTableCell-head": {
+            backgroundColor: theme.palette.primary.dark,
+            color: theme.palette.primary.contrastText,
+            fontWeight: "bold",
+          },
+          "& .MuiTableCell-body": {
+            backgroundColor: theme.palette.primary.light,
+            color: "white",
+          },
+          "& .MuiTableCell-root": {
+            border: `1px solid ${theme.palette.secondary.main} `,
+          },
+        }}
+      >
         <TableHead>
           <TableRow>
             <TableCell>Pizza</TableCell>
-            <TableCell>æ©escription</TableCell>
+            <TableCell>Description</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

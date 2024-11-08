@@ -1,13 +1,14 @@
 import { useState, SyntheticEvent } from "react";
 
 import { NewPizza } from "../../types";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, useTheme } from "@mui/material";
 
 interface AddPizzaProps {
   addPizza: (pizza: NewPizza) => void;
 }
 
 const AddPizza = ({ addPizza }: AddPizzaProps) => {
+  const theme = useTheme();
   const [pizza, setPizza] = useState("");
   const [description, setDescription] = useState("");
 
@@ -29,7 +30,15 @@ const AddPizza = ({ addPizza }: AddPizzaProps) => {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        marginTop: 2,
+        padding: 3,
+        backgroundColor: "secondary.light",
+        borderRadius: 4,
+        boxShadow: 2,
+      }}
+    >
       <form onSubmit={handleSubmit}>
         <Box sx={{ marginBottom: 2 }}>
           <TextField
@@ -42,6 +51,9 @@ const AddPizza = ({ addPizza }: AddPizzaProps) => {
             onChange={handlePizzaChange}
             required
             color="primary"
+            sx={{
+              input: { color: theme.palette.secondary.contrastText },
+            }}
           />
         </Box>
         <Box sx={{ marginBottom: 2 }}>
@@ -55,6 +67,9 @@ const AddPizza = ({ addPizza }: AddPizzaProps) => {
             onChange={handleDescriptionChange}
             required
             color="primary"
+            sx={{
+              input: { color: theme.palette.secondary.contrastText },
+            }}
           />
         </Box>
         <Button type="submit" variant="contained" color="primary">

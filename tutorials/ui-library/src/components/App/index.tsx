@@ -1,9 +1,10 @@
-import "./App.css";
+
 import Footer from "../Footer";
 import Header from "../Header";
 import Main from "../Main";
 import { useState } from "react";
 import { Box } from "@mui/material";
+import pizza from "../../assets/images/pizza.jpg";
 
 function App() {
   const [actionToBePerformed, setActionToBePerformed] = useState(false);
@@ -17,7 +18,16 @@ function App() {
   };
 
   return (
-    <Box>
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      backgroundImage: `url(${pizza})`,
+      backgroundSize: 'cover',
+    }}>
+      
+      
+
       <Header
         title="We love Pizza"
         version={0 + 1}
@@ -27,6 +37,7 @@ function App() {
         actionToBePerformed={actionToBePerformed}
         clearActionToBePerformed={clearActionToBePerformed}
       />
+      
       <Footer />
     </Box>
   );
