@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import sound from "../../assets/sounds/Infecticide-11-Pizza-Spinoza.mp3";
 import DrinkCard from "./DrinkCard";
 import DrinkMenu from "./DrinkMenu";
@@ -38,6 +38,11 @@ const defaultPizzas = [
 
 const Main = () => {
 
+  
+
+  
+
+  
   const [pizzas, setPizzas] = useState(defaultPizzas);
 
   const addPizza = (newPizza:NewPizza) => {   
@@ -48,7 +53,7 @@ const Main = () => {
 
   };
 
-
+  
 
   return (
     <main>
