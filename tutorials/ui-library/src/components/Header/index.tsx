@@ -1,5 +1,5 @@
+import { Box, Container, Typography } from "@mui/material";
 import { useState } from "react";
-import "./Header.css";
 
 interface HeaderProps {
   title: string;
@@ -7,7 +7,7 @@ interface HeaderProps {
   handleHeaderClick: () => void;
 }
 
-const Header = ({ title, version, handleHeaderClick }: HeaderProps) => {
+const Header = ({ title, handleHeaderClick }: HeaderProps) => {
   const [menuPrinted, setMenuPrinted] = useState(false);
 
   const handleClick = () => {
@@ -17,12 +17,16 @@ const Header = ({ title, version, handleHeaderClick }: HeaderProps) => {
   };
 
   return (
-    <header onClick={handleClick}>
-      <h1 className="animate__animated animate__bounce">
-        {menuPrinted ? `${title}... and rarely do we hate it!` : title}
-      </h1>
-      <h4>Version: {version}</h4>
-    </header>
+    <Box
+      component="header"
+      onClick={handleClick}
+    >
+      <Container maxWidth="sm">
+        <Typography variant="h1">
+          {menuPrinted ? `${title}... and rarely do we hate it!` : title}
+        </Typography>
+      </Container>
+    </Box>
   );
 };
 

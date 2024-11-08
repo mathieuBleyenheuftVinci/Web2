@@ -3,6 +3,7 @@ import Footer from "../Footer";
 import Header from "../Header";
 import Main from "../Main";
 import { useState } from "react";
+import { Box } from "@mui/material";
 
 function App() {
   const [actionToBePerformed, setActionToBePerformed] = useState(false);
@@ -16,7 +17,7 @@ function App() {
   };
 
   return (
-    <div className="page">
+    <Box>
       <Header
         title="We love Pizza"
         version={0 + 1}
@@ -27,7 +28,7 @@ function App() {
         clearActionToBePerformed={clearActionToBePerformed}
       />
       <Footer />
-    </div>
+    </Box>
   );
 }
 
