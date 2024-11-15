@@ -1,0 +1,9 @@
+.header{
+    display: flex;
+    text-align: left;
+    background-color: rgb(75, 75, 75);
+}
+
+img{
+    width: 10%;
+}

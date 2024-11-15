@@ -1,5 +1,5 @@
 import MovieCard from "./MovieCard";
-import { Movie } from "../types";
+import { Movie } from "../../types";
 import "./MovieListView.css";
 
 interface MovieListViewProps {

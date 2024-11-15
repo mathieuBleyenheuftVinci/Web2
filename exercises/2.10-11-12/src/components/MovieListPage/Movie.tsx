@@ -1,10 +1,5 @@
 import { useState } from "react";
-
-interface Movie {
-  title: string;
-  director: string;
-  description?: string;
-}
+import { Movie } from "../../types";
 
 interface MovieItemProps {
   movie: Movie;
@@ -23,5 +18,3 @@ const MovieItem = ({ movie }: MovieItemProps) => {
 };
 
 export default MovieItem;
-
-export type { Movie };
