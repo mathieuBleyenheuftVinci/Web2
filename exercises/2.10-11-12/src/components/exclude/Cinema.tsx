@@ -1,5 +1,5 @@
-import { Movie } from "../../types";
-import MovieItem from "../MovieListPage/Movie";
+import type {Movie} from "./MovieItem";
+import MovieItem from "./MovieItem";
 
 interface CinemaProps {
   name: string;
@@ -11,7 +11,7 @@ const Cinema = (props: CinemaProps) => (
     <h2>{props.name}</h2>
     <ul>
       {props.movies.map((movie) => (
-        <MovieItem key={movie.title} movie={movie}/>
+        <MovieItem key={movie.title} movie={movie} />
       ))}
     </ul>
   </div>
