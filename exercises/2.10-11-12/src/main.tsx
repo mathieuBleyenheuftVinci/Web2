@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
-import theme from './themes.ts'
+import theme from './themes.ts';
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import FavoriteMovie from "./components/FavoriteMovie";
 import HomePage from "./components/Main";
@@ -26,7 +26,8 @@ const router = createBrowserRouter([
       {
         path: "cinemaspage",
         element: <CinemaPage />,
-      }
+      },
+
     ],
   },
 ]);

@@ -14,24 +14,19 @@ interface AddMovieFormProps {
   onMovieAdded: (movie: Movie) => void;
 }
 
-const AddMovieForm = ({ onMovieAdded }: AddMovieFormProps) => {
-  const [title, setTitle] = useState("");
-  const [director, setDirector] = useState("");
-  const [duration, setDuration] = useState(0);
-  const [imageUrl, setImageUrl] = useState("");
-  const [description, setDescription] = useState("");
-  const [budget, setBudget] = useState(0);
-
-  const handleSubmit = (e: SyntheticEvent) => {
-    e.preventDefault();
-    onMovieAdded({ title, director, duration, imageUrl, description, budget });
-    setTitle("");
-    setDirector("");
-    setDuration(0);
-    setImageUrl("");
-    setDescription("");
-    setBudget(0);
-  };
+const AddMovieForm = ({ onMovieAdded }: AddMovieFormProps) => { 
+  const [nextId, setNextId] = useState(6); 
+  const [title, setTitle] = useState(""); 
+  const [director, setDirector] = useState(""); 
+  const [duration, setDuration] = useState(0); 
+  const [imageUrl, setImageUrl] = useState(""); 
+  const [description, setDescription] = useState(""); 
+  const [budget, setBudget] = useState(0); 
+  const handleSubmit = (e: SyntheticEvent) => { 
+    e.preventDefault(); 
+    const newMovie = { id: nextId, title, director, duration, imageUrl, description, budget }; 
+    onMovieAdded(newMovie); setNextId(nextId + 1);
+  }    
 
   const [open, setOpen] = useState(false);
   const handleClick = () => {
