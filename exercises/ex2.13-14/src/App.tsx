@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [joke, setJoke] = useState<{ joke: string } | null>();
+  const [category, setCategory] = useState<{category: string} | null>();
 
+  const fetchJoke = () => {
+    fetch('https://v2.jokeapi.dev/joke/Any?type=single')
+      .then(response => response.json())
+      .then(joke => {
+        setJoke(joke);
+        setCategory({ category: joke.category });
+      })
+  }
+  useEffect(() => {
+    fetchJoke();
+  } ,[])
+
+  const handleClick = () => {
+    fetchJoke();
+  }
+      
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+        <div>
+          <h1>Random Joke</h1>
+          <p>Category : {category?.category}</p>
+          <p>{joke?.joke}</p>
+        <button onClick={handleClick}>A new joke</button>
+        </div>
   )
 }
 
-export default App
+export default App;
