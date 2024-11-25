@@ -15,19 +15,22 @@ function App() {
       })
   }
   useEffect(() => {
+
+    const timer = setTimeout(() => {
+    }, 10000);
     fetchJoke();
+    return () => clearTimeout(timer);
   } ,[])
 
-  const handleClick = () => {
+  /*const handleClick = () => {
     fetchJoke();
-  }
+  }*/
       
   return (
         <div>
           <h1>Random Joke</h1>
           <p>Category : {category?.category}</p>
           <p>{joke?.joke}</p>
-        <button onClick={handleClick}>A new joke</button>
         </div>
   )
 }
