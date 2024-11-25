@@ -17,8 +17,8 @@ function App() {
   useEffect(() => {
 
     const timer = setTimeout(() => {
+      fetchJoke();
     }, 10000);
-    fetchJoke();
     return () => clearTimeout(timer);
   } ,[])
 
