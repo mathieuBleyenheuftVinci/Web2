@@ -16,10 +16,10 @@ function App() {
   }
   useEffect(() => {
 
-    const timer = setTimeout(() => {
+    const interval = setInterval(() => {
       fetchJoke();
     }, 10000);
-    return () => clearTimeout(timer);
+    return () => clearInterval(interval);
   } ,[])
 
   /*const handleClick = () => {
