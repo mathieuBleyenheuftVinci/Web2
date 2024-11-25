@@ -38,7 +38,7 @@ const RandomDog = () => {
   return (
     <div>
       <h3>Random dog</h3>
-      <img src={dog.message} alt="Random dog" style={{ maxHeight: 300 }} />
+      <img src={dog.message} alt="Random dog" style={{ maxHeight: 350 }} />
     </div>
   );
 };
