@@ -1,10 +1,5 @@
 import { useState } from "react";
-
-interface Movie {
-  title: string;
-  director: string;
-  description?: string;
-}
+import { Movie } from "../types";
 
 interface MovieItemProps {
   movie: Movie;

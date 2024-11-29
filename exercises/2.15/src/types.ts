@@ -1,5 +1,5 @@
-interface MovieFavourite {
-  id: number,
+interface Movie {
+  id: number;
   title: string;
   director: string;
   duration: number;
@@ -7,10 +7,12 @@ interface MovieFavourite {
   description?: string;
   budget?: number;
 }
-interface MovieList {
-  title: string;
-  director: string;
-  description?: string;
+
+interface MovieContext {
+  movies: Movie[];
+  onMovieAdded: (newMovie: NewMovie) => void;
 }
 
-export type { MovieFavourite as Movie, MovieList };
+type NewMovie = Omit<Movie, "id">;
+
+export type { Movie, MovieContext, NewMovie };

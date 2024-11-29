@@ -1,14 +1,14 @@
-import CssBaseline from "@mui/material/CssBaseline";
-import "@fontsource/roboto/700.css";
-import { ThemeProvider } from "@mui/material/styles";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./components/App";
-import theme from './themes.ts';
+import "./index.css";
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import FavoriteMovie from "./components/FavoriteMovie";
-import HomePage from "./components/Main";
-import CinemaPage from "./components/CinemaPage";
+import HomePage from "./components/pages/HomePage";
+import App from "./components/App";
+import CinemaPage from "./components/pages/CinemaPage";
+import MovieListPage from "./components/pages/MovieListPage";
+import AddMoviePage from "./components/pages/AddMoviePage";
+import MoviePage from "./components/pages/MoviePage";
 
 const router = createBrowserRouter([
   {
@@ -20,23 +20,27 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "moviespage",
-        element: <FavoriteMovie />,
-      },
-      {
-        path: "cinemaspage",
+        path: "cinemas",
         element: <CinemaPage />,
       },
-
+      {
+        path: "movie-list",
+        element: <MovieListPage />,
+      },
+      {
+        path: "add-movie",
+        element: <AddMoviePage />,
+      },
+      {
+        path: "movies/:id",
+        element: <MoviePage />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme.dark}>
-      <CssBaseline />
-      <RouterProvider router={router}/> 
-    </ThemeProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

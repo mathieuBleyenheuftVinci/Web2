@@ -1,4 +1,4 @@
-import type {Movie} from "./MovieItem";
+import { Movie } from "../types";
 import MovieItem from "./MovieItem";
 
 interface CinemaProps {
