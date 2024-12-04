@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { NewFilm } from "../types";
-
+import { authorize} from "../utils/auths";
 import { containsOnlyExpectedKeys } from "../utils/validate";
 
 import {
@@ -58,7 +58,7 @@ router.get("/:id", (req, res) => {
 });
 
 // Create a new film
-router.post("/", (req, res) => {
+router.post("/", authorize, (req, res) => {
   const body: unknown = req.body;
 
   if (
@@ -101,7 +101,7 @@ router.post("/", (req, res) => {
 });
 
 // Delete a film by id
-router.delete("/:id", (req, res) => {
+router.delete("/:id", authorize, (req, res) => {
   const id = Number(req.params.id);
 
   if (isNaN(id)) {
@@ -118,7 +118,7 @@ router.delete("/:id", (req, res) => {
 });
 
 // Update on or multiple props of a film
-router.patch("/:id", (req, res) => {
+router.patch("/:id", authorize,(req, res) => {
   const id = Number(req.params.id);
 
   if (isNaN(id)) {
@@ -163,7 +163,7 @@ router.patch("/:id", (req, res) => {
 });
 
 // Update a film only if all properties are given or create it if it does not exist and the id is not existant
-router.put("/:id", (req, res) => {
+router.put("/:id", authorize,(req, res) => {
   const body: unknown = req.body;
 
   if (

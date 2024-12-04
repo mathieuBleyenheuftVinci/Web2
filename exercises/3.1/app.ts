@@ -1,9 +1,7 @@
 import express, { ErrorRequestHandler } from "express";
 import cors from "cors";
 
-import usersRouter from "./routes/users";
-import pizzaRouter from "./routes/pizzas";
-import drinkRouter from "./routes/drinks";
+import filmsRouter from "./routes/films";
 import authsRouter from "./routes/auths";
 
 
@@ -26,9 +24,7 @@ app.use((_req, _res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/users", usersRouter);
-app.use("/pizzas", pizzaRouter);
-app.use("/drinks", drinkRouter);
+app.use("/films", filmsRouter);
 app.use("/auths", authsRouter);
 
 
