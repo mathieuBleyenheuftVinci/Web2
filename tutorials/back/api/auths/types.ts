@@ -1,3 +1,5 @@
+import { Request } from "express";
+
 interface Pizza {
   id: number;
   title: string;
@@ -34,4 +36,14 @@ interface User {
 
 type PotentialUSer = Omit<User, "id">;
 
-export type { Pizza, NewPizza, PizzaToUpdate, Drink, NewDrink, AuthenticatedUser, User,  PotentialUSer };
+interface AuthenticatedRequest extends Request {
+  user?: User;
+}
+
+interface JwtPayload {
+  username: string;
+  exp: number;
+  iat: number;
+}
+
+export type { Pizza, NewPizza, PizzaToUpdate, Drink, NewDrink, AuthenticatedUser, User,  PotentialUSer, AuthenticatedRequest, JwtPayload };
