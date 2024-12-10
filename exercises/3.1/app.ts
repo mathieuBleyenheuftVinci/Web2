@@ -3,6 +3,7 @@ import cors from "cors";
 
 import filmsRouter from "./routes/films";
 import authsRouter from "./routes/auths";
+import commentsRouter from "./routes/comments";
 
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/films", filmsRouter);
 app.use("/auths", authsRouter);
+app.use("/comments", commentsRouter);
 
 
 const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
