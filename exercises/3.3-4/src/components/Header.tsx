@@ -3,13 +3,17 @@ import "./Header.css";
 interface HeaderProps {
   urlLogo: string;
   children: React.ReactNode;
+  theme: "light" | "dark";
 }
 
-const Header = (props: HeaderProps) => {
+const Header = ({urlLogo, children, theme}: HeaderProps) => {
   return (
-    <footer className="header">
-      <img src={props.urlLogo} alt="logo" className="logo" />
-      <div>{props.children}</div>
+    <footer className="header" style={{
+      backgroundColor: theme === "dark" ? "black" : "white",
+      color: theme === "dark" ? "white" : "black",
+    }}>
+      <img src={urlLogo} alt="logo" className="logo" />
+      <div>{children}</div>
     </footer>
   );
 };

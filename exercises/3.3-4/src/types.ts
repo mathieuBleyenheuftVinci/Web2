@@ -11,7 +11,7 @@ interface Movie {
 interface MovieContext {
   movies: Movie[];
   onMovieAdded: (newMovie: NewMovie) => void;
-  onMovieDeleted: (id: number) => void;
+  onMovieDeleted: (movie: Movie) => void;
 }
 
 type NewMovie = Omit<Movie, "id">;

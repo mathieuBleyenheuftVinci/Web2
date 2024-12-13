@@ -3,13 +3,32 @@ import "./Footer.css";
 interface FooterProps {
   urlLogo: string;
   children: React.ReactNode;
+  theme: "light" | "dark";
+  handleThemeChange: () => void;
 }
 
-const Footer = (props: FooterProps) => {
+const Footer = ({
+  children,
+  urlLogo,
+  theme,
+  handleThemeChange,
+}: FooterProps) => {
   return (
-    <footer className="footer">
-      <div>{props.children}</div>
-      <img src={props.urlLogo} alt="logo" className="logo" />
+    <footer
+      className="footer"
+      style={{
+        backgroundColor: theme === "dark" ? "black" : "white",
+        color: theme === "dark" ? "white" : "black",
+      }}
+    >
+      <div>{children}</div>
+      <img src={urlLogo} alt="logo" className="logo" />
+      <button
+        onClick={handleThemeChange}
+        style={{ backgroundColor: theme === "dark" ? "white" : "black" }}
+      >
+        {theme === "light" ? "🌙" : "☀️"}
+      </button>
     </footer>
   );
 };

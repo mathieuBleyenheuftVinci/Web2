@@ -10,7 +10,7 @@ const MovieListPage = () => {
     <div>
       <PageTitle title="My favorite movies" />
 
-      <MovieListView movies={movies} onMovieDeleted={onMovieDeleted} />
+      <MovieListView movies={movies} onMovieDeleted={onMovieDeleted}/>
 
       <br />
       <br />
