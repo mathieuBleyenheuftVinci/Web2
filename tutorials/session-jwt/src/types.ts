@@ -12,7 +12,6 @@ interface Drink {
   volume: string;
   price: string;
 }
-
 interface PizzeriaContext {
   pizzas: Pizza[];
   setPizzas: (pizzas: Pizza[]) => void;
@@ -21,6 +20,28 @@ interface PizzeriaContext {
   clearActionToBePerformed: () => void;
   drinks: Drink[];
   addPizza: (newPizza: NewPizza) => Promise<void>;
+  registerUser: (newUser: User) => Promise<void>;
+  loginUser: (user: User) => Promise<void>;
 }
 
-export type { Pizza, NewPizza, Drink, PizzeriaContext };
+interface User {
+  username: string;
+  password: string;
+}
+
+interface AuthenticatedUser {
+  username: string;
+  token: string;
+}
+
+type MaybeAuthenticatedUser = AuthenticatedUser | undefined;
+
+export type {
+  Pizza,
+  NewPizza,
+  Drink,
+  PizzeriaContext,
+  User,
+  AuthenticatedUser,
+  MaybeAuthenticatedUser,
+};
